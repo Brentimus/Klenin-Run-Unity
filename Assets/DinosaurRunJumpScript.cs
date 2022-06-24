@@ -5,16 +5,16 @@ using UnityEngine;
 public class DinosaurRunJumpScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float velocity = 1;
+    public float velocity = 1000;
     private Rigidbody2D rigidBody2D;
-    private CapsuleCollider2D capsuleCollider;
+    private BoxCollider2D boxCollider2D;
     [SerializeField] private LayerMask platformLayerMask;
     public GameManager gameManager;
 
     void Start()
     {
-        rigidBody2D = GetComponent<Rigidbody2D>();    
-        capsuleCollider = GetComponent<CapsuleCollider2D>();        
+        rigidBody2D = GetComponent<Rigidbody2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();        
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class DinosaurRunJumpScript : MonoBehaviour
     }
 
     private bool isGrounded(){
-        return Physics2D.Raycast(capsuleCollider.bounds.center, Vector2.down, capsuleCollider.bounds.extents.y + .01f, platformLayerMask).collider != null;
+        return Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.down, boxCollider2D.bounds.extents.y + .01f, platformLayerMask).collider != null;
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
