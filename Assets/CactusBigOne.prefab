@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8280270658994038703}
   - component: {fileID: 8280270658994038702}
   - component: {fileID: 8280270658994038700}
-  - component: {fileID: 8013667454707957264}
+  - component: {fileID: 953894857433443473}
   m_Layer: 0
   m_Name: CactusBigOne
   m_TagString: Untagged
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8280270658994038697}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: -2.93, z: 0}
-  m_LocalScale: {x: 6, y: 5.8, z: 1}
+  m_LocalPosition: {x: 15, y: -3, z: 0}
+  m_LocalScale: {x: 0.54, y: 0.54, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1023261430536304328, guid: d76fe8a8832a21944bed230645820a59, type: 3}
-  m_Color: {r: 0.0017758856, g: 0.4528302, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b32f2b8a8b539744ca9ef3077a1fdc67, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a1a741756f4d14ab775aa6d3886c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!68 &8013667454707957264
+--- !u!68 &953894857433443473
 EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,26 +112,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.05072133, y: -0.23436229}
-  - {x: -0.056630064, y: -0.20310496}
-  - {x: -0.043138906, y: -0.19626877}
-  - {x: -0.044326708, y: -0.082172215}
-  - {x: -0.08562017, y: -0.080718935}
-  - {x: -0.12828392, y: -0.0401774}
-  - {x: -0.12504093, y: 0.107318945}
-  - {x: -0.09065144, y: 0.13726929}
-  - {x: -0.048130594, y: 0.11430158}
-  - {x: -0.046695795, y: 0.23126607}
-  - {x: -0.0014593651, y: 0.25229168}
-  - {x: 0.0413959, y: 0.2268773}
-  - {x: 0.040653307, y: 0.10963772}
-  - {x: 0.08529353, y: 0.15524793}
-  - {x: 0.12748615, y: 0.12869704}
-  - {x: 0.12737282, y: -0.018094953}
-  - {x: 0.077034235, y: -0.06410787}
-  - {x: 0.04861855, y: -0.07548882}
-  - {x: 0.04737766, y: -0.23078677}
-  - {x: -0.049170986, y: -0.23180097}
+  - {x: 0.65222025, y: 2.8962908}
+  - {x: 0.6608257, y: -3.1163015}
+  - {x: -0.8520756, y: -3.188983}
+  - {x: -0.91366386, y: 2.9302194}
+  - {x: 0.6862159, y: 2.8962922}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0

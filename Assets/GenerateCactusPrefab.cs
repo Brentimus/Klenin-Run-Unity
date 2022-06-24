@@ -11,13 +11,15 @@ public class GenerateCactusPrefab : MonoBehaviour
     private float timer = 0;
     public GameObject cactusSmallOne; 
     public GameObject cactusBigOne; 
-    public GameObject cactusBigMulti; 
-    public GameObject bird; 
+    public Sprite[] Sprite_Pic;
+    private int rand;
 
     void Start()
     {
-            GameObject newCactus = Instantiate(cactusSmallOne);
-            Destroy(newCactus, 6);
+        rand = Random.Range(0, 10);
+        cactusSmallOne.GetComponent<SpriteRenderer>().sprite = Sprite_Pic[rand];
+        GameObject newCactus = Instantiate(cactusSmallOne);
+        Destroy(newCactus, 6);   
     }
 
     // Update is called once per frame
@@ -25,29 +27,23 @@ public class GenerateCactusPrefab : MonoBehaviour
     {
         if(timer > cactusSpawnTime){
             int type = Random.Range(1, 4);
-            
             if(type == 1){
-                    GameObject newCactus = Instantiate(cactusSmallOne);
-                    Destroy(newCactus, 6);
+                rand = Random.Range(0, 10);
+                cactusSmallOne.GetComponent<SpriteRenderer>().sprite = Sprite_Pic[rand];
+                GameObject newCactus = Instantiate(cactusSmallOne);
+                Destroy(newCactus, 6);
             }
 
             else if(type == 2) {
 
                 type = Random.Range(1, 3);
                 if(type == 1){
+                    rand = Random.Range(0, 10);
+                    cactusBigOne.GetComponent<SpriteRenderer>().sprite = Sprite_Pic[rand];
                     GameObject newCactus = Instantiate(cactusBigOne);
                     Destroy(newCactus, 6);
                 }
-                else{
-                    GameObject newCactus = Instantiate(cactusBigMulti);
-                    Destroy(newCactus, 6);
-                }
             }
-            else{
-                GameObject newBird = Instantiate(bird);
-                Destroy(newBird, 6);
-            }
-
 
             timer = 0;
             cactusSpawnTime = Random.Range(minCactiTime, maxCactiTime);

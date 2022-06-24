@@ -14,7 +14,7 @@ public class MoveGroundScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((-1 *transform.position.x) >= 60){
+        if((-1 *transform.position.x) >= 25){
             transform.position = originalPos;
         }
         transform.position += Vector3.left * GameManager.gameSpeed * Time.deltaTime;

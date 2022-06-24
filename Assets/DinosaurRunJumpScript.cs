@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class DinosaurRunJumpScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float velocity = 1000;
     private Rigidbody2D rigidBody2D;
     private BoxCollider2D boxCollider2D;
-    [SerializeField] private LayerMask platformLayerMask;
     public GameManager gameManager;
+
+    public float speed;
+    public Transform feetPos;
+    private bool isGrounded;
+    public float checkRadius;
+    [SerializeField] private LayerMask whatIsGround;
+    private float moveInput;
+    public float jumpForce;
+    private bool isJumping;
+
+    private float jumpTimeCounter;
+    public float jumpTime;
 
     void Start()
     {
@@ -17,22 +26,44 @@ public class DinosaurRunJumpScript : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();        
     }
 
+    private void FixedUpdate()
+    {
+        rigidBody2D.velocity = new Vector2(moveInput * speed, rigidBody2D.velocity.y);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (isGrounded() && Input.GetMouseButtonDown(0))
-        {   
-            rigidBody2D.velocity = Vector2.up * velocity;
-        }
-    }
+        isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
 
-    private bool isGrounded(){
-        return Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.down, boxCollider2D.bounds.extents.y + .01f, platformLayerMask).collider != null;
+        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            isJumping = true;
+            jumpTimeCounter = jumpTime;
+
+            rigidBody2D.velocity = Vector2.up * jumpForce;
+        }
+
+        if (Input.GetKey(KeyCode.Space) && isJumping == true)
+        {
+            if (jumpTimeCounter > 0)
+            {
+                rigidBody2D.velocity = Vector2.up * jumpForce;
+                jumpTimeCounter -= Time.deltaTime;
+            } else
+            {
+                isJumping = false;
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isJumping = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.name != "ground"){
-            gameManager.GameOver();
+            //gameManager.GameOver();
             //SceneManager.LoadScene(0);
         }
     }
