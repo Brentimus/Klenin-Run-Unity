@@ -10,7 +10,8 @@ public class GenerateCactusPrefab : MonoBehaviour
     public float maxCactiTime = 1;
     private float timer = 0;
     public GameObject cactusSmallOne; 
-    public GameObject cactusBigOne; 
+    public GameObject cactusBigOne;
+    public GameObject coffee;
     public Sprite[] Sprite_Pic;
     private int rand;
 
@@ -25,13 +26,17 @@ public class GenerateCactusPrefab : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if(timer > cactusSpawnTime){
             int type = Random.Range(1, 4);
             if(type == 1){
                 rand = Random.Range(0, 10);
                 cactusSmallOne.GetComponent<SpriteRenderer>().sprite = Sprite_Pic[rand];
                 GameObject newCactus = Instantiate(cactusSmallOne);
+                GameObject newCoffee = Instantiate(coffee);
                 Destroy(newCactus, 6);
+                Destroy(newCoffee, 6);
             }
 
             else if(type == 2) {

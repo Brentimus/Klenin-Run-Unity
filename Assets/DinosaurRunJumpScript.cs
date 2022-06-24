@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DinosaurRunJumpScript : MonoBehaviour
 {
@@ -31,7 +32,6 @@ public class DinosaurRunJumpScript : MonoBehaviour
         rigidBody2D.velocity = new Vector2(moveInput * speed, rigidBody2D.velocity.y);
     }
 
-    // Update is called once per frame
     void Update()
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
@@ -62,9 +62,13 @@ public class DinosaurRunJumpScript : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.name != "ground"){
-            //gameManager.GameOver();
-            //SceneManager.LoadScene(0);
+        if (other.gameObject.name == "coffee(Clone)")
+        {
+            UpdateScore.score++;
+            Destroy(other.gameObject);
+        } else if (other.gameObject.name != "ground"){
+            gameManager.GameOver();
         }
+
     }
 }
