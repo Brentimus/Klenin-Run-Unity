@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        Debug.Log("1111");
         gameRunning = false;
         SceneManager.LoadScene(0);
     }

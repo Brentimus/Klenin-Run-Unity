@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class SetFinalHighScore : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
-    {   
-
+    {
         int finalScore = 0;
         if (PlayerPrefs.HasKey("HiScore"))
              {
@@ -28,11 +26,5 @@ public class SetFinalHighScore : MonoBehaviour
             }
 
         GetComponent<UnityEngine.UI.Text>().text = "Hi-Score: " + finalScore;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

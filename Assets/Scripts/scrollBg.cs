@@ -21,9 +21,5 @@ public class scrollBg : MonoBehaviour
         {
             transform.position = startPosition;
         }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            Debug.Log(transform.position.x);
-        }
     }
 }

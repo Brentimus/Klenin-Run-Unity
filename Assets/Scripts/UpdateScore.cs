@@ -5,19 +5,19 @@ using UnityEngine;
 public class UpdateScore : MonoBehaviour
 {
     public static int score = 0;
-    // Start is called before the first frame update
+
     void Start()
     {
         GetComponent<UnityEngine.UI.Text>().text = "Score: 0";
         score = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         GetComponent<UnityEngine.UI.Text>().text = "Score: " + score.ToString();
+        GameManager.gameSpeed = (8 + (score / 2));
 
-        if(score >= 1 && score < 2){
+        /*if(score >= 1 && score < 2){
             GameManager.gameSpeed = 15;
         }
         else if(score >= 3 && score < 4){
@@ -28,7 +28,7 @@ public class UpdateScore : MonoBehaviour
         }
         else if(score >= 6){
             GameManager.gameSpeed = 35;
-        }
+        }*/
     }
 
 }

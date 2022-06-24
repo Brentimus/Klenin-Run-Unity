@@ -62,13 +62,17 @@ public class DinosaurRunJumpScript : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.name != "ground"){
+            gameManager.GameOver();
+        }
+
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.gameObject.name == "coffee(Clone)")
         {
             UpdateScore.score++;
             Destroy(other.gameObject);
-        } else if (other.gameObject.name != "ground"){
-            gameManager.GameOver();
         }
-
     }
 }
