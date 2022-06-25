@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SetFinalHighScore : MonoBehaviour
 {
+    public GameManager gameManager;
     void Start()
     {
         int finalScore = 0;
@@ -12,6 +14,7 @@ public class SetFinalHighScore : MonoBehaviour
                 int hiScore = PlayerPrefs.GetInt("HiScore");
                 if(UpdateScore.score > hiScore){
                     finalScore = UpdateScore.score;
+                    gameManager.Highscore();
                     PlayerPrefs.SetInt("HiScore", UpdateScore.score);
                     PlayerPrefs.Save();
                 }
@@ -22,6 +25,7 @@ public class SetFinalHighScore : MonoBehaviour
         else{
                 PlayerPrefs.SetInt("HiScore",UpdateScore.score);
                 PlayerPrefs.Save();
+                gameManager.Highscore();    
                 finalScore = UpdateScore.score;
             }
 
