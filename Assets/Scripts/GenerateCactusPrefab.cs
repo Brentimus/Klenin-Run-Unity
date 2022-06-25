@@ -30,7 +30,7 @@ public class GenerateCactusPrefab : MonoBehaviour
             int coffeeRand = Random.Range(1, 4);
             if (coffeeRand == 1)
             {
-                GameObject newCoffee = Instantiate(coffee, new Vector3(Random.Range(10, 25), Random.Range(0, 3), 0), Quaternion.identity);
+                GameObject newCoffee = Instantiate(coffee, new Vector3(Random.Range(15, 30), Random.Range(0, 3), 0), Quaternion.identity);
                 Destroy(newCoffee, 6);
             }
 

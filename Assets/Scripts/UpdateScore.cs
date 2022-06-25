@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UpdateScore : MonoBehaviour
 {
+    [SerializeField]
     public static int score = 0;
 
     void Start()
@@ -15,7 +16,8 @@ public class UpdateScore : MonoBehaviour
     void Update()
     {
         GetComponent<UnityEngine.UI.Text>().text = "Score: " + score.ToString();
-        GameManager.gameSpeed = (8 + (score / 2));
+        if (GameManager.gameSpeed <= 20)
+            GameManager.gameSpeed = (20 + (score / 2));
 
         /*if(score >= 1 && score < 2){
             GameManager.gameSpeed = 15;
