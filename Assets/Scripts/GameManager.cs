@@ -32,7 +32,12 @@ public class GameManager : MonoBehaviour
             deathSound.Play();
         }
 
-        if(Input.GetButton("Jump") && !gameRunning){
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+        if (Input.GetButton("Jumping") && !gameRunning){
             music.Play();
             Time.timeScale = 1;
             gameRunning = true;
@@ -40,7 +45,7 @@ public class GameManager : MonoBehaviour
             startGameCanvas.SetActive(false);
         }
 
-        if (Input.GetButtonDown("Jump") && flagGameover)
+        if (Input.GetButtonDown("Jumping") && flagGameover)
         {
             ResetGame();
         }

@@ -29,7 +29,7 @@ public class DinosaurRunJumpScript : MonoBehaviour
     void Start()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
-        boxCollider2D = GetComponent<BoxCollider2D>();        
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     private void FixedUpdate()
@@ -43,7 +43,7 @@ public class DinosaurRunJumpScript : MonoBehaviour
 
         animator.SetBool("IsJumping", !isGrounded);
 
-        if (isGrounded == true && Input.GetButtonDown("Jump"))
+        if (isGrounded == true && (Input.GetKeyDown(KeyCode.UpArrow)))
         {
             isJumping = true;
             jumpTimeCounter = jumpTime;
@@ -51,7 +51,7 @@ public class DinosaurRunJumpScript : MonoBehaviour
             rigidBody2D.velocity = Vector2.up * jumpForce;
         }
 
-        if (Input.GetButton("Jump") && isJumping == true)
+        if ((Input.GetKey(KeyCode.UpArrow)) && isJumping == true)
         {
             if (jumpTimeCounter > 0)
             {
@@ -62,9 +62,14 @@ public class DinosaurRunJumpScript : MonoBehaviour
                 isJumping = false;
             }
         }
-        if (Input.GetButtonUp("Jump"))
+        if (Input.GetKeyUp(KeyCode.UpArrow))
         {
             isJumping = false;
+        }
+
+        if (isGrounded == true && Input.GetButtonDown("Jumping"))
+        {
+            rigidBody2D.velocity = Vector2.up * 26;
         }
     }
 
