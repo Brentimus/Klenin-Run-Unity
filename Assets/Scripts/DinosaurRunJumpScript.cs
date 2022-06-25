@@ -9,6 +9,9 @@ public class DinosaurRunJumpScript : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     public GameManager gameManager;
 
+    public AudioSource deathSound;
+    public AudioSource coinSound;
+
     public float speed;
     public Transform feetPos;
     private bool isGrounded;
@@ -40,7 +43,7 @@ public class DinosaurRunJumpScript : MonoBehaviour
 
         animator.SetBool("IsJumping", !isGrounded);
 
-        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
+        if (isGrounded == true && Input.GetButtonDown("Jump"))
         {
             isJumping = true;
             jumpTimeCounter = jumpTime;
@@ -48,7 +51,7 @@ public class DinosaurRunJumpScript : MonoBehaviour
             rigidBody2D.velocity = Vector2.up * jumpForce;
         }
 
-        if (Input.GetKey(KeyCode.Space) && isJumping == true)
+        if (Input.GetButton("Jump") && isJumping == true)
         {
             if (jumpTimeCounter > 0)
             {
@@ -59,7 +62,7 @@ public class DinosaurRunJumpScript : MonoBehaviour
                 isJumping = false;
             }
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetButtonUp("Jump"))
         {
             isJumping = false;
         }
@@ -67,7 +70,8 @@ public class DinosaurRunJumpScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.name != "ground"){
-           gameManager.GameOver();
+            deathSound.Play();
+            gameManager.GameOver();
         }
 
     }
@@ -75,6 +79,7 @@ public class DinosaurRunJumpScript : MonoBehaviour
     {
         if (other.gameObject.name == "coffee(Clone)")
         {
+            coinSound.Play();
             UpdateScore.score++;
             Destroy(other.gameObject);
         }
