@@ -16,7 +16,7 @@ public class UpdateScore : MonoBehaviour
     void Update()
     {
         GetComponent<UnityEngine.UI.Text>().text = "Score: " + score.ToString();
-        if (GameManager.gameSpeed <= 20)
+        if (GameManager.gameSpeed <= 25)
             GameManager.gameSpeed = (20 + (score / 2));
 
         /*if(score >= 1 && score < 2){

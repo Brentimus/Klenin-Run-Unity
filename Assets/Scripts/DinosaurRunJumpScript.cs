@@ -21,6 +21,8 @@ public class DinosaurRunJumpScript : MonoBehaviour
     private float jumpTimeCounter;
     public float jumpTime;
 
+    public Animator animator;
+
     void Start()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
@@ -35,6 +37,8 @@ public class DinosaurRunJumpScript : MonoBehaviour
     void Update()
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
+
+        animator.SetBool("IsJumping", !isGrounded);
 
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
@@ -63,7 +67,7 @@ public class DinosaurRunJumpScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.name != "ground"){
-           //gameManager.GameOver();
+           gameManager.GameOver();
         }
 
     }
